@@ -19,6 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedCategory = 0;
   @override
   Widget build(BuildContext context) {
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    final gridImageLogicalWidth =
+        (MediaQuery.of(context).size.width - 48 - 12) / 2;
+    final memCacheWidth = (gridImageLogicalWidth * devicePixelRatio).round();
+    final memCacheHeight = (150 * devicePixelRatio).round();
+
     return BlocConsumer<ProductsCubit, ProductsState>(
       listener: (context, state) {
         if (state is ProductsError) {
@@ -143,6 +149,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                       imageUrl: product.images[0],
                                       height: 150,
                                       width: double.infinity,
+                                      fit: BoxFit.cover,
+                                      memCacheWidth: memCacheWidth,
+                                      memCacheHeight: memCacheHeight,
                                       placeholder: (context, url) {
                                         return const SizedBox(
                                           height: 150,
@@ -157,7 +166,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       errorWidget: (context, url, error) {
                                         debugPrint('IMAGE ERROR: $error');
                                         debugPrint('IMAGE URL: $url');
-
                                         return const SizedBox(
                                           height: 150,
                                           width: double.infinity,
