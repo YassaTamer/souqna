@@ -4,6 +4,7 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:souqna/core/constants/app_colors.dart';
+import 'package:souqna/core/constants/app_sizes.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
 import 'package:souqna/core/router/app_router.dart';
 import 'package:souqna/core/widgets/app_button.dart';
@@ -41,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 final profile = state.profile;
                 return SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.fromLTRB(24, 24, 24, AppSizes.bottomNavClearance),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -104,12 +105,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Gap(8),
                               ProfileMenuTile(
                                 icon: Icons.storefront_outlined,
-                                title: "My Listings ",
-                                subtitle: "Manage the products you sell ",
+                                title: "My Listings",
+                                subtitle: "Manage the products you sell",
                                 onTap: () => context.push(AppRouter.myListings),
                               ),
                               Gap(8),
-
                               ProfileMenuTile(
                                 iconColor: AppColors.muted,
                                 icon: Icons.settings,

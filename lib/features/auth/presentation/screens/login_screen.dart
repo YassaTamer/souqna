@@ -6,7 +6,7 @@ import 'package:souqna/core/constants/app_colors.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
 import 'package:souqna/core/router/app_router.dart';
 import 'package:souqna/core/widgets/app_button.dart';
-import 'package:souqna/core/widgets/auth_text_field.dart';
+import 'package:souqna/core/widgets/app_text_field.dart';
 import 'package:souqna/features/auth/cubit/auth_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -57,14 +57,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: AppTextStyles.caption,
                     ),
                     Gap(32),
-                    AuthTextField(
+                    AppTextField(
                       label: "Email",
                       hintText: "you@example.com",
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                     ),
                     Gap(24),
-                    AuthTextField(
+                    AppTextField(
                       label: "Password",
                       hintText: "••••••••",
                       controller: _passwordController,

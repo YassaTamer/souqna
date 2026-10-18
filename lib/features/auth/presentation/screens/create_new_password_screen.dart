@@ -3,7 +3,7 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:souqna/core/constants/app_colors.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
 import 'package:souqna/core/widgets/app_button.dart';
-import 'package:souqna/core/widgets/auth_text_field.dart';
+import 'package:souqna/core/widgets/app_text_field.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
   const CreateNewPasswordScreen({super.key});
@@ -42,7 +42,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                   style: AppTextStyles.caption,
                 ),
                 Gap(32),
-                AuthTextField(
+                AppTextField(
                   label: 'Password',
                   hintText: '••••••••',
                   obscureText: true,
@@ -51,7 +51,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                   textInputAction: TextInputAction.next,
                 ),
                 Gap(16),
-                AuthTextField(
+                AppTextField(
                   label: 'Confirm Password',
                   hintText: '••••••••',
                   obscureText: true,

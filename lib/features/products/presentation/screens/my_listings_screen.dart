@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:souqna/core/constants/app_colors.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
+import 'package:souqna/core/router/app_router.dart';
 import 'package:souqna/features/home/data/models/product_model.dart';
 import 'package:souqna/features/products/presentation/widgets/empty_products_view.dart';
 import 'package:souqna/features/products/presentation/widgets/products_list_view.dart';
@@ -68,7 +69,9 @@ class MyListingsScreen extends StatelessWidget {
                   ),
                   child: IconButton(
                     icon: const Icon(Icons.add, color: Colors.white, size: 16),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.push(AppRouter.addEditProduct);
+                    },
                   ),
                 ),
               ),

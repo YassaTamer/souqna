@@ -5,7 +5,7 @@ import 'package:souqna/core/constants/app_colors.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
 import 'package:souqna/core/router/app_router.dart';
 import 'package:souqna/core/widgets/app_button.dart';
-import 'package:souqna/core/widgets/auth_text_field.dart';
+import 'package:souqna/core/widgets/app_text_field.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -49,7 +49,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   style: AppTextStyles.caption,
                 ),
                 Gap(16),
-                AuthTextField(
+                AppTextField(
                   textInputAction: TextInputAction.done,
                   label: 'Email',
                   hintText: 'you@example.com',

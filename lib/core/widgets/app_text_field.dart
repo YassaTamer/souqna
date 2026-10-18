@@ -3,8 +3,8 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:souqna/core/constants/app_colors.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
 
-class AuthTextField extends StatelessWidget {
-  const AuthTextField({
+class AppTextField extends StatelessWidget {
+  const AppTextField({
     super.key,
     required this.label,
     required this.hintText,

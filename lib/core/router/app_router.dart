@@ -7,10 +7,12 @@ import 'package:souqna/features/auth/presentation/screens/login_screen.dart';
 import 'package:souqna/features/auth/presentation/screens/otp_verification_screen.dart';
 import 'package:souqna/features/auth/presentation/screens/register_screen.dart';
 import 'package:souqna/features/home/cubit/products_cubit.dart';
+import 'package:souqna/features/home/data/models/product_model.dart';
 import 'package:souqna/features/home/data/repositories/product_repository.dart';
 import 'package:souqna/features/home/presentation/screens/home_screen.dart';
 import 'package:souqna/features/main_navigation/presentation/screens/main_navigation_shell.dart';
 import 'package:souqna/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:souqna/features/products/presentation/screens/add_edit_product_screen.dart';
 import 'package:souqna/features/products/presentation/screens/my_listings_screen.dart';
 import 'package:souqna/features/profile/cubit/profile_cubit.dart';
 import 'package:souqna/features/profile/data/repositories/profile_repository.dart';
@@ -31,6 +33,7 @@ class AppRouter {
   static const profile = '/profile';
   static const myListingsSegment = 'my-listings';
   static const myListings = '$profile/$myListingsSegment';
+  static const addEditProduct = '/add-edit-product';
 }
 
 final _homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -68,6 +71,13 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRouter.createNewPassword,
       builder: (context, state) => CreateNewPasswordScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.addEditProduct,
+      builder: (context, state) {
+        final product = state.extra as ProductModel?;
+        return AddEditProductScreen(product: product,);
+      },
     ),
     // GoRoute(
     //   path: AppRouter.myListings,

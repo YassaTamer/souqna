@@ -6,7 +6,7 @@ import 'package:souqna/core/constants/app_colors.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
 import 'package:souqna/core/router/app_router.dart';
 import 'package:souqna/core/widgets/app_button.dart';
-import 'package:souqna/core/widgets/auth_text_field.dart';
+import 'package:souqna/core/widgets/app_text_field.dart';
 import 'package:souqna/features/auth/cubit/auth_cubit.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -35,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccess) {
-          context.go(AppRouter.otpVerification , extra: _emailController.text);
+          context.go(AppRouter.otpVerification, extra: _emailController.text);
         }
         if (state is AuthError) {
           ScaffoldMessenger.of(
@@ -73,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Gap(16),
 
-                    AuthTextField(
+                    AppTextField(
                       label: 'Full name',
                       hintText: 'Yassa Shahat',
                       controller: _fullNameController,
@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Gap(16),
 
-                    AuthTextField(
+                    AppTextField(
                       label: 'Phone number',
                       hintText: '+20 100 000 0000',
                       controller: _phoneNumberController,
@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Gap(16),
 
-                    AuthTextField(
+                    AppTextField(
                       label: 'Email',
                       hintText: 'you@example.com',
                       controller: _emailController,
@@ -99,7 +99,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       textInputAction: TextInputAction.next,
                     ),
                     Gap(16),
-                    AuthTextField(
+                    AppTextField(
                       label: 'Password',
                       hintText: '••••••••',
                       obscureText: true,

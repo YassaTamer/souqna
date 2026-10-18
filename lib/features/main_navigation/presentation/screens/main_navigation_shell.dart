@@ -74,7 +74,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
           child: Center(
             child: GestureDetector(
               onTap: () {
-                context.push(AppRouter.myListings);
+                context.push(AppRouter.addEditProduct);
               },
               child: Container(
                 decoration: BoxDecoration(
