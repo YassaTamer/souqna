@@ -18,8 +18,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
@@ -41,90 +39,101 @@ class _ProfileScreenState extends State<ProfileScreen> {
               }
               if (state is ProfileLoaded) {
                 final profile = state.profile;
-                return Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('My Profile', style: AppTextStyles.h2),
-                      Gap(6),
-                      Text(
-                        'Your buyer and seller account',
-                        style: AppTextStyles.caption,
-                      ),
-                      Gap(24),
-                      Center(
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 56,
-                              backgroundColor: AppColors.background,
-                              child: Lottie.network(
-                                repeat: true,
-                                fit: BoxFit.fill,
-                                'https://lottie.host/1ffd8d58-52c1-4144-9df8-454c41a3941a/0iRPwUE8El.json',
-                              ),
-                            ),
-                            Gap(8),
-                            Text(
-                              profile.fullName ?? ' ',
-                              style: AppTextStyles.title,
-                            ),
-                            Gap(8),
-                            Text(
-                              profile.phoneNumber ?? " ",
-                              style: AppTextStyles.caption,
-                            ),
-                            Gap(16),
-                            Container(
-                              width: double.infinity,
-                              height: 56,
-                              decoration: BoxDecoration(
-                                color: AppColors.surface,
-                                border: BoxBorder.all(color: AppColors.border),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(12),
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  style: AppTextStyles.caption,
-                                  profile.bio ?? 'No bio yet',
-                                ),
-                              ),
-                            ),
-                            Gap(16),
-                            ProfileMenuTile(
-                              icon: Icons.edit,
-                              title: 'Edit Profile',
-                              subtitle: 'Update name, phone, avatar, bio',
-                            ),
-                            Gap(8),
-
-                            ProfileMenuTile(
-                              iconColor: AppColors.muted,
-                              icon: Icons.settings,
-                              title: 'Settings',
-                              subtitle: 'Language, theme, notifications',
-                            ),
-                            Gap(16),
-
-                            BlocBuilder<AuthCubit, AuthState>(
-                              builder: (context, authState) {
-                                return AppButton(
-                                  label: "Logout",
-                                  isLoading: authState is AuthLoading,
-                                  onPressed: () {
-                                    context.read<AuthCubit>().logout();
-                                  },
-                                );
-                              },
-                            ),
-                          ],
+                return SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('My Profile', style: AppTextStyles.h2),
+                        Gap(6),
+                        Text(
+                          'Your buyer and seller account',
+                          style: AppTextStyles.caption,
                         ),
-                      ),
-                    ],
+                        Gap(24),
+                        Center(
+                          child: Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 56,
+                                backgroundColor: AppColors.background,
+                                child: Lottie.network(
+                                  repeat: true,
+                                  fit: BoxFit.fill,
+                                  'https://lottie.host/1ffd8d58-52c1-4144-9df8-454c41a3941a/0iRPwUE8El.json',
+                                ),
+                              ),
+                              Gap(8),
+                              Text(
+                                profile.fullName ?? ' ',
+                                style: AppTextStyles.title,
+                              ),
+                              Gap(8),
+                              Text(
+                                profile.phoneNumber ?? " ",
+                                style: AppTextStyles.caption,
+                              ),
+                              Gap(16),
+                              Container(
+                                width: double.infinity,
+                                height: 56,
+                                decoration: BoxDecoration(
+                                  color: AppColors.surface,
+                                  border: BoxBorder.all(
+                                    color: AppColors.border,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(12),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    textAlign: TextAlign.center,
+                                    style: AppTextStyles.caption,
+                                    profile.bio ?? 'No bio yet',
+                                  ),
+                                ),
+                              ),
+                              Gap(16),
+                              ProfileMenuTile(
+                                icon: Icons.edit,
+                                title: 'Edit Profile',
+                                subtitle: 'Update name, phone, avatar, bio',
+                              ),
+                              Gap(8),
+                              ProfileMenuTile(
+                                icon: Icons.storefront_outlined,
+                                title: "My Listings ",
+                                subtitle: "Manage the products you sell ",
+                                onTap: () => context.push(AppRouter.myListings),
+                              ),
+                              Gap(8),
+
+                              ProfileMenuTile(
+                                iconColor: AppColors.muted,
+                                icon: Icons.settings,
+                                title: 'Settings',
+                                subtitle: 'Language, theme, notifications',
+                              ),
+                              Gap(16),
+
+                              BlocBuilder<AuthCubit, AuthState>(
+                                builder: (context, authState) {
+                                  return AppButton(
+                                    label: "Logout",
+                                    isLoading: authState is AuthLoading,
+                                    onPressed: () {
+                                      context.read<AuthCubit>().logout();
+                                    },
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }

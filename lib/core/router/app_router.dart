@@ -11,6 +11,7 @@ import 'package:souqna/features/home/data/repositories/product_repository.dart';
 import 'package:souqna/features/home/presentation/screens/home_screen.dart';
 import 'package:souqna/features/main_navigation/presentation/screens/main_navigation_shell.dart';
 import 'package:souqna/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:souqna/features/products/presentation/screens/my_listings_screen.dart';
 import 'package:souqna/features/profile/cubit/profile_cubit.dart';
 import 'package:souqna/features/profile/data/repositories/profile_repository.dart';
 import 'package:souqna/features/profile/presentation/screens/profile_screen.dart';
@@ -28,6 +29,8 @@ class AppRouter {
   static const search = '/search';
   static const orders = '/orders';
   static const profile = '/profile';
+  static const myListingsSegment = 'my-listings';
+  static const myListings = '$profile/$myListingsSegment';
 }
 
 final _homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -67,7 +70,11 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => CreateNewPasswordScreen(),
     ),
     // GoRoute(
-  
+    //   path: AppRouter.myListings,
+    //   builder: (context, state) => MyListingsScreen(),
+    // ),
+
+    // GoRoute(
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MultiBlocProvider(
@@ -118,6 +125,12 @@ final GoRouter appRouter = GoRouter(
             GoRoute(
               path: AppRouter.profile,
               builder: (context, state) => const ProfileScreen(),
+              routes: [
+                GoRoute(
+                  path: AppRouter.myListingsSegment,
+                  builder: (context, state) => MyListingsScreen(),
+                ),
+              ],
             ),
           ],
         ),
@@ -137,6 +150,7 @@ class _SearchPlaceholder extends StatelessWidget {
     );
   }
 }
+
 class _OrdersPlaceholder extends StatelessWidget {
   const _OrdersPlaceholder();
 
@@ -144,9 +158,7 @@ class _OrdersPlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.green,
-      child: const Center(
-        child: Text('Orders'),
-      ),
+      child: const Center(child: Text('Orders')),
     );
   }
 }

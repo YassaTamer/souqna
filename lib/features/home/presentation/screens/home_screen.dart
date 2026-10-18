@@ -177,30 +177,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                         );
                                       },
                                     ),
-
-                                    ///=====///
-                                    // child: Image.network(
-                                    //   product.images[0],
-                                    //   height: 150,
-                                    //   width: double.infinity,
-                                    //   fit: BoxFit.cover,
-                                    //   loadingBuilder:
-                                    //       (context, child, loadingProgress) {
-                                    //         if (loadingProgress == null) {
-                                    //           return child;
-                                    //         }
-                                    //         return const SizedBox(
-                                    //           height: 150,
-                                    //           width: double.infinity,
-                                    //           child: Center(
-                                    //             child:
-                                    //                 CircularProgressIndicator(
-                                    //                   color: AppColors.primary,
-                                    //                 ),
-                                    //           ),
-                                    //         );
-                                    //       },
-                                    //),
                                   ),
                                   Gap(4),
                                   Text(

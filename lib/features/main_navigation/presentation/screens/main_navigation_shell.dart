@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:souqna/core/constants/app_colors.dart';
 import 'package:souqna/core/constants/app_text_styles.dart';
+import 'package:souqna/core/router/app_router.dart';
+
 class MainNavigationShell extends StatefulWidget {
   const MainNavigationShell({super.key, required this.navigationShell});
   final StatefulNavigationShell navigationShell;
@@ -71,7 +73,9 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
 
           child: Center(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.push(AppRouter.myListings);
+              },
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.accent,
@@ -103,7 +107,10 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
     final bool isSelected = widget.navigationShell.currentIndex == index;
     return GestureDetector(
       onTap: () {
-        widget.navigationShell.goBranch(index);
+        widget.navigationShell.goBranch(
+          index,
+          initialLocation: index == widget.navigationShell.currentIndex,
+        );
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
