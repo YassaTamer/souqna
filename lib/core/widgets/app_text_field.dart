@@ -10,7 +10,7 @@ class AppTextField extends StatelessWidget {
     required this.hintText,
     required this.controller,
     this.obscureText = false,
-    required this.keyboardType,
+    this.keyboardType = TextInputType.text,
     this.textInputAction,
   });
   final String label;
@@ -45,6 +45,15 @@ class AppTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(color: AppColors.primary),
             ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: AppColors.error),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: AppColors.error),
+            ),
+            errorStyle: AppTextStyles.caption.copyWith(color: AppColors.error),
           ),
           controller: controller,
         ),
