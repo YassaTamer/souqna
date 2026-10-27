@@ -120,7 +120,14 @@ class MyListingsScreen extends StatelessWidget {
               Expanded(
                 child: products.isEmpty
                     ? EmptyProductsView(onAddProduct: () {})
-                    : ProductsListView(products: products),
+                    : ProductsListView(
+                        products: products,
+                        onEdit: (product) => context.push(
+                          AppRouter.addEditProduct,
+                          extra: product,
+                        ),
+                        onDelete: (product) {},
+                      ),
               ),
             ],
           ),

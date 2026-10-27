@@ -9,7 +9,12 @@ import 'package:souqna/core/widgets/app_button.dart';
 import 'package:souqna/features/home/data/models/product_model.dart';
 
 class ProductListTile extends StatelessWidget {
-  const ProductListTile({super.key, required this.product});
+  const ProductListTile({
+    super.key,
+    required this.product,
+    required this.onEdit,
+    required this.onDelete,
+  });
   final ProductModel product;
   Widget _thumbnailPlaceholder() {
     return SvgPicture.asset(
@@ -18,6 +23,8 @@ class ProductListTile extends StatelessWidget {
     );
   }
 
+  final VoidCallback onEdit;
+  final VoidCallback onDelete;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -137,7 +144,7 @@ class ProductListTile extends StatelessWidget {
                         type: AppButtonType.outlinePrimary,
                         width: 72,
                         height: 32,
-                        onPressed: () {},
+                        onPressed: onEdit,
                       ),
                       Gap(8),
                       AppButton(
@@ -145,7 +152,7 @@ class ProductListTile extends StatelessWidget {
                         type: AppButtonType.outlineDanger,
                         width: 72,
                         height: 32,
-                        onPressed: () {},
+                        onPressed: onDelete,
                       ),
                     ],
                   ),

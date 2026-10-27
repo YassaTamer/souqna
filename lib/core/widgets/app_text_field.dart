@@ -12,13 +12,20 @@ class AppTextField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.textInputAction,
+    this.maxLines,
+    this.minLines,
+    this.validator,
   });
+  final int? maxLines;
+  final int? minLines;
   final String label;
   final String hintText;
   final bool obscureText;
   final TextEditingController controller;
   final TextInputType keyboardType;
   final TextInputAction? textInputAction;
+  final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +33,10 @@ class AppTextField extends StatelessWidget {
       children: [
         Text(label, style: AppTextStyles.caption),
         Gap(8),
-        TextField(
+        TextFormField(
+          validator: validator,
+          maxLines: maxLines,
+          minLines: minLines,
           textInputAction: textInputAction,
           keyboardType: keyboardType,
           style: AppTextStyles.body,

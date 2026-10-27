@@ -11,8 +11,9 @@ class AppDropdownField extends StatelessWidget {
     required this.items,
     required this.value,
     required this.onChanged,
+    this.validator,
   });
-
+  final String? Function(String?)? validator;
   final String label;
   final String hintText;
   final List<String> items;
@@ -27,6 +28,7 @@ class AppDropdownField extends StatelessWidget {
         Text(label, style: AppTextStyles.caption),
         const Gap(8),
         DropdownButtonFormField<String>(
+          validator: validator,
           initialValue: value,
           isExpanded: true,
           icon: const Icon(Icons.keyboard_arrow_down_rounded),

@@ -164,8 +164,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         );
                                       },
                                       errorWidget: (context, url, error) {
-                                        debugPrint('IMAGE ERROR: $error');
-                                        debugPrint('IMAGE URL: $url');
+                                        // debugPrint('IMAGE ERROR: $error');
+                                        // debugPrint('IMAGE URL: $url');
                                         return const SizedBox(
                                           height: 150,
                                           width: double.infinity,
