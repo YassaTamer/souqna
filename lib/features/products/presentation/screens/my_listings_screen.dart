@@ -5,6 +5,7 @@ import 'package:souqna/core/constants/app_text_styles.dart';
 import 'package:souqna/core/router/app_router.dart';
 import 'package:souqna/core/widgets/app_back_app_bar.dart';
 import 'package:souqna/features/home/data/models/product_model.dart';
+import 'package:souqna/features/products/data/models/product_photo.dart';
 import 'package:souqna/features/products/presentation/widgets/empty_products_view.dart';
 import 'package:souqna/features/products/presentation/widgets/products_list_view.dart';
 
@@ -16,7 +17,12 @@ class MyListingsScreen extends StatelessWidget {
       sellerId: 'user_1',
       title: 'Oak dining table',
       price: 1600,
-      images: [],
+      category: 'Home & Furniture',
+      description: 'Solid oak, seats six',
+      images: [
+        'https://images.pexels.com/photos/17273611/pexels-photo-17273611.jpeg',
+        'https://images.pexels.com/photos/33629791/pexels-photo-33629791.jpeg',
+      ],
       status: 'active',
     ),
     ProductModel(
